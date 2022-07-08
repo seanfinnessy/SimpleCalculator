@@ -1,7 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import calculate from '../apis/calculate';
 
-// TODO: If lots of numbers are entered, enlarge calculation. Fix error after pressing equals, needs to clear values. 
 const App = () => {
   const [int1, setInt1] = useState("");
   const [int2, setInt2] = useState("");
@@ -66,7 +65,7 @@ const App = () => {
   const displayStyle = {
     margin: '1rem 1rem 1rem 1rem',
     border: '1px solid black',
-    height: '10vh'
+    height: '8vh'
   };
 
   const renderValues = () => {
