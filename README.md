@@ -1,5 +1,6 @@
 # SimpleCalculator
 Very simple calculator using React and Python.
+Please verify that you have node/npm and Python installed on your computer before trying to run the commands below.
 
 # Instructions to run back-end server
 Open a terminal and navigate to \SimpleCalculator\server after cloning the repository.
