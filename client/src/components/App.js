@@ -1,14 +1,22 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import calculate from '../apis/calculate';
 
+// TODO: If lots of numbers are entered, enlarge calculation. Fix error after pressing equals, needs to clear values. 
 const App = () => {
-
   const [int1, setInt1] = useState("");
   const [int2, setInt2] = useState("");
   const [operator, setOperator] = useState("");
   const [result, setResult] = useState("");
 
-  const updateInt = (e) => {
+  const updateInt = useCallback((e) => {
+    // Clear display screen if result is already displayed.
+    if (result !== "") {
+      clearValues();
+      setInt1(e.target.textContent);
+      return;
+    }
+
+    // Fill display screen.
     if (operator === "") {
       if (int1 === "") {
         setInt1(e.target.textContent);
@@ -16,14 +24,13 @@ const App = () => {
         setInt1(int1 + e.target.textContent);
       }
     } else {
-      if (int1 === "") {
+      if (int2 === "") {
         setInt2(e.target.textContent);
       } else {
         setInt2(int2 + e.target.textContent);
       }
     }
-
-  }
+  }, [int1, int2, operator, result])
 
   const sendRequest = async () => {
     if (int1 !== "" && int2 !== "" && operator !== "") {
@@ -82,14 +89,14 @@ const App = () => {
       <>
         <div className='container'>
           <div className='row d-flex justify-content-center'>
-            <div style={displayStyle} className='col10'>
+            <div style={displayStyle} className='col-10'>
               <div className='row d-flex justify-content-end'>
-                <strong className='col-5 d-flex justify-content-end'>
+                <strong className='col-xs-5 d-flex justify-content-end'>
                   {renderValues()}
                 </strong>
               </div>
               <div className='row d-flex justify-content-end'>
-                <strong className='col-5 d-flex justify-content-end'>
+                <strong className='col-xs-5 d-flex justify-content-end'>
                   {renderResult()}
                 </strong>
               </div>
