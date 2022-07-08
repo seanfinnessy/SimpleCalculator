@@ -2,7 +2,7 @@
 Very simple calculator using React and Python.
 
 # Instructions to run back-end server
-Open a terminal and navigate to \SimpleCalculator\server.
+Open a terminal and navigate to \SimpleCalculator\server after cloning the repository.
 Run the command: pip install -r requirements.txt.
 Run the command: python app.py to start the Flask development server.
 
