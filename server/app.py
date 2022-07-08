@@ -10,6 +10,7 @@ app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
+# Create resource
 class Operation(Resource):
     '''
     Perform operation on two integers based on request data.
@@ -26,6 +27,6 @@ class Operation(Resource):
 # Add Resources
 api.add_resource(Operation, "/calculate")
 
-# debug = True only in dev, never prod.
+# Normally dont keep debug=True if going to actual production.
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
