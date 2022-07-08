@@ -74,7 +74,7 @@ const App = () => {
     if (result === "") {
       return "";
     } else {
-      return result;
+      return `= ${result}`;
     }
   }
   const renderScreen = () => {
@@ -82,14 +82,14 @@ const App = () => {
       <>
         <div className='container'>
           <div className='row d-flex justify-content-center'>
-            <div style={displayStyle} className='col-xl-10'>
+            <div style={displayStyle} className='col10'>
               <div className='row d-flex justify-content-end'>
-                <strong className='col-xl-5 d-flex justify-content-end'>
+                <strong className='col-5 d-flex justify-content-end'>
                   {renderValues()}
                 </strong>
               </div>
               <div className='row d-flex justify-content-end'>
-                <strong className='col-xl-5 d-flex justify-content-end'>
+                <strong className='col-5 d-flex justify-content-end'>
                   {renderResult()}
                 </strong>
               </div>
@@ -104,55 +104,55 @@ const App = () => {
     return (
       <>
         <div className='row'>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>1</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>2</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>3</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => setOperator(e.target.textContent)} style={buttonStyle} className='btn btn-outline-primary'>+</button>
           </div>
         </div>
         <div className='row'>
-        <div className='col-xl-3 d-flex justify-content-center'>
+        <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>4</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>5</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>6</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => setOperator(e.target.textContent)} style={buttonStyle} className='btn btn-outline-primary'>-</button>
           </div>
         </div>
         <div className='row'>
-        <div className='col-xl-3 d-flex justify-content-center'>
+        <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>7</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>8</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>9</button>
           </div>
-          <div className='col-xl-3 d-flex justify-content-center'>
+          <div className='col-3 d-flex justify-content-center'>
             <button onClick={(e) => setOperator(e.target.textContent)} style={buttonStyle} className='btn btn-outline-primary'>x</button>
           </div>
         </div>
         <div className='row'>
-          <div className='col-xl-4 d-flex justify-content-center'>
+          <div className='col-4 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>0</button>
           </div>
-          <div className='col-xl-4 d-flex justify-content-center'>
+          <div className='col-4 d-flex justify-content-center'>
             <button onClick={clearValues} style={buttonStyle} className='btn btn-outline-primary'>C</button>
           </div>
-          <div className='col-xl-4 d-flex justify-content-center'>
+          <div className='col-4 d-flex justify-content-center'>
             <button onClick={sendRequest} style={buttonStyle} className='btn btn-outline-primary'>=</button>
           </div>
         </div>
@@ -164,7 +164,7 @@ const App = () => {
     return (
       <>
         <div className='row d-flex justify-content-center'>
-          <div style={{border: '1px solid black'}} className='col-xl-6'>
+          <div style={{border: '3px solid gray'}} className='col-6'>
             {renderScreen()}
             {renderButtons()}
           </div>
