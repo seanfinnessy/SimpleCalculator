@@ -7,11 +7,6 @@ const App = () => {
   const [int2, setInt2] = useState("");
   const [operator, setOperator] = useState("");
   const [result, setResult] = useState("");
-  const [calcObj, setCalcObj] = useState({
-    "int1": int1,
-    "int2": int2,
-    "operator": operator
-  });
 
   const updateInt = (e) => {
     if (operator === "") {
@@ -30,20 +25,30 @@ const App = () => {
 
   }
 
-  const sendRequest = () => {
-    const newCalcObj = {
-      "int1": parseInt(int1),
-      "int2": parseInt(int2),
-      "operator": operator
-    }
-    setCalcObj(newCalcObj);
+  const sendRequest = async () => {
+    if (int1 !== "" && int2 !== "" && operator !== "") {
+      const calcObj = {
+        "int1": parseInt(int1),
+        "int2": parseInt(int2),
+        "operator": operator
+      };
     
+      try {
+        const response = await calculate.post('/calculate', calcObj);
+        setResult(response.data.result);
+      } catch (error) {
+        alert(error);
+      }
+    } else {
+      return null;
+    }
   }
 
   const clearValues = () => {
     setInt1("");
     setInt2("");
     setOperator("");
+    setResult("");
   };
 
   const buttonStyle = {
@@ -54,13 +59,22 @@ const App = () => {
   const displayStyle = {
     margin: '1rem 1rem 1rem 1rem',
     border: '1px solid black',
+    height: '5vh'
   };
 
   const renderValues = () => {
     if (int1 === "" && int2 === "" && operator === "") {
-      return "Nothing";
+      return "";
     } else {
       return `${int1} ${operator} ${int2}`;
+    }
+  }
+
+  const renderResult = () => {
+    if (result === "") {
+      return "";
+    } else {
+      return result;
     }
   }
   const renderScreen = () => {
@@ -70,14 +84,14 @@ const App = () => {
           <div className='row d-flex justify-content-center'>
             <div style={displayStyle} className='col-xl-10'>
               <div className='row d-flex justify-content-end'>
-                <div className='col-xl-5'>
+                <strong className='col-xl-5 d-flex justify-content-end'>
                   {renderValues()}
-                </div>
+                </strong>
               </div>
               <div className='row d-flex justify-content-end'>
-                <div className='col-xl-5'>
-                  Result
-                </div>
+                <strong className='col-xl-5 d-flex justify-content-end'>
+                  {renderResult()}
+                </strong>
               </div>
             </div>
           </div>
@@ -132,11 +146,14 @@ const App = () => {
           </div>
         </div>
         <div className='row'>
-          <div className='col-xl-6 d-flex justify-content-center'>
+          <div className='col-xl-4 d-flex justify-content-center'>
             <button onClick={(e) => updateInt(e)} style={buttonStyle} className='btn btn-outline-primary'>0</button>
           </div>
-          <div className='col-xl-6 d-flex justify-content-center'>
+          <div className='col-xl-4 d-flex justify-content-center'>
             <button onClick={clearValues} style={buttonStyle} className='btn btn-outline-primary'>C</button>
+          </div>
+          <div className='col-xl-4 d-flex justify-content-center'>
+            <button onClick={sendRequest} style={buttonStyle} className='btn btn-outline-primary'>=</button>
           </div>
         </div>
       </>

@@ -7,11 +7,11 @@ def math(operator, int1, int2) -> int:
     Returns an integer.
     '''
     match operator:
-        case "multiply":
+        case "x":
             result = int(int1 * int2)
-        case "add":
+        case "+":
             result = int(int1 + int2)
-        case "subtract":
+        case "-":
             result = int(int1 - int2)
         case _:
             return None
