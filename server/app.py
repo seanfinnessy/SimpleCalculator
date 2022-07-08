@@ -17,7 +17,7 @@ class Operation(Resource):
     def post(self):
         data = request.get_json()
         result = math(operator=data["operator"], int1=data["int1"], int2=data["int2"])
-        if not result:
+        if result is None:
             abort(404, message="Error processing request.")
         return {
             "result": result
