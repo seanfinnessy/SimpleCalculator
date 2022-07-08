@@ -66,7 +66,7 @@ const App = () => {
   const displayStyle = {
     margin: '1rem 1rem 1rem 1rem',
     border: '1px solid black',
-    height: '5vh'
+    height: '10vh'
   };
 
   const renderValues = () => {
